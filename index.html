@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Framework -->
+  <!-- VueJS -->
+  <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- jQuery, Popper.js and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- FontAwesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- Meta -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Zimpuservice bietet Ihnen kompetenten Unterhalt Ihrer Hebebühnen. Ebenfalls können Sie von uns Ihr Personal schulen lassen oder Ersatzteile für Ihre Arbeitsbühnen bestellen." />
+	<meta name="keywords" content="Elmer Schulung und Handel,Zimpuservice,Schweiz,Hubarbeitsbühnen Schulung,Hubarbeitsbühnen Kurs,Arbeitsbühnen Schulung,Arbeitsbühnen Kurs,Arbeitsbühnen Prüfung,Hubarbeitsbühnen Prüfung,Arbeitsbühnen,Hebebühnen Prüfung,Hebebühnen Kurs,Hebebühnen Schulung,Skyworker,Skyworker Prüfung,Skyworker Schulung,IPAF Prüfung,IPAF,Schulung,Arbeitsbühnen Ausweis,Skyworker Ausweis,Umgang,Arbeitsbühne,Schulungspflicht,Peter,Elmer,S+H,Schulungen,Arbeitsbühnen,Ausbildung,Arbeitsbühnen,Mechanikerschulung,Scherenbühnen,Boom,Skyworker,LKW,Arbeitsbühnen,LKW,Bühnen,Anhängerbühnen,Manitou,Genie,JLG,ITECO,HAB,UP,Right,Holland,Lift,Haulotte,AIRO,WUMAG,Ruthmann,Paggliero,Palfinger,GSR,Dino,Lift,OMME,Vermieter,Arbeitsbühnen,Arbeitsbühnen mieten,Hebebühnen mieten" />
+	<meta name="copyright" content="Zimpuservice, Schweiz, Sebastian Zimmermann">
+  <meta name="Content-Language" content="de, ch, deutsch, german, at">
+  <title>Zimpuservice</title>
+  <link href="web.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <div id="app">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="http://zimpuservice.ch">ZIMPUSERVICE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" v-bind:class="{active: firmActive}" v-on:click="firmActive = true; serviceActive = false; contactActive = false;">
+              <a class="nav-link" href="#firm">Unternehmen</a>
+            </li>
+            <li class="nav-item" v-bind:class="{active: serviceActive}" v-on:click="serviceActive = true; firmActive = false; contactActive = false;">
+              <a class="nav-link" href="#service">Maschinenservice</a>
+            </li>
+            <li class="nav-item" v-bind:class="{active: contactActive}" v-on:click="contactActive = true; firmActive = false; serviceActive = false;">
+              <a class="nav-link" href="#contact">Kontakt</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- header panel -->
+    <header class="bg-custom-grey">
+      <div class="container text-center col-md-auto" id="headerLogoDiv">
+        <img src="img/logo-centered.png" width="927" height="120"/>
+      </div>
+    </header>
+    <!-- firm panel -->
+    <section id="firm" class="bg-light addPaddingToRowContent">
+      <div class="container">
+        <h4 class="font-weight-bold">Zimpuservice</h4>
+        <h6 class="font-weight-light text-uppercase">Peter Zimmermann</h6>
+        <div class="row justify-content-md-center">
+          <div class="col-lg-4 mb-4">
+            <img src="img/p_stand.png" width="300" height="451"/>
+          </div>
+          <div class="col-lg-6 mb-6 panelContentBullet font-weight-light">
+            <div class="row">
+              <div class="col-1"><i class="fas fa-rocket panelBulletIcon"></i></div>
+              <div class="col">22. Mai 2015 gegründet</div>
+            </div>
+            <div class="row">
+              <div class="col-1"><i class="fas fa-wrench panelBulletIcon"></i></div>
+              <div class="col">Maschinenservice</div>
+            </div>
+            <div class="row">
+              <div class="col-1"><i class="fas fa-cogs panelBulletIcon"></i></div>
+              <div class="col">Ersatzteile</div>
+            </div>
+            <div class="row">
+              <div class="col-1"><i class="fas fa-book panelBulletIcon"></i></div>
+              <div class="col">Angewandte Schulungen</div>
+            </div>
+            <div class="row">
+              <div class="col-1"><i class="fas fa-thumbs-up panelBulletIcon"></i></div>
+              <div class="col">Kundenzufriedenheit</div>
+            </div>
+            <div class="row">
+              <div class="col-1"><i class="fas fa-briefcase panelBulletIcon"></i></div>
+              <div class="col">Berufserfahrung</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- service panel -->
+    <section id="service" class="bg-light addPaddingToRowContent">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h4 class="font-weight-bold">Maschinenservice</h4>
+            <h6 class="font-weight-light text-uppercase">Hebebühnenservice an Ort und Stelle</h6>
+            <br>
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-lg-3 mb-3 text-center d-flex align-items-center">
+            <p class="text-center">
+              <i class="fas fa-cogs fa-10x"></i>
+            </p>
+          </div>
+          <div class="col-lg-7 mb-7 panelContentBullet">
+            <p>Unsere Dienstleistungen umfassen:</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Störungsbehebungen</li>
+              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Jahresinspektionen</li>
+              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Maschinenservice</li>
+              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Reparaturen</li>
+              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Ausführung der Arbeit vor Ort</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row justify-content-md-center addSmallPaddingToRowContent">
+          <div class="col-3 mb-3 text-center d-flex align-items-center">
+            <img src="img/machine-logo/haulotte.png" width="124" height="35"/>
+          </div>
+          <div class="col-6 mb-6">
+            <p class="font-weight-bold">Offizieller Handels- und Servicepartner
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-certificate" data-fa-transform="grow-6" style="color:Green"></i>
+                <i class="fas fa-check" data-fa-transform="shrink-6" style="color:White"></i>
+              </span></p>
+            <p>Beratung, Verkauf, Service sowie Totalrevisionen in Zusammenarbeit mit der Haulotte Group</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <p class="font-weight-light">Mit diesen Marken sind wir ebenfalls bestens vertraut:</p>
+            <br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-4 text-center">
+            <img src="img/machine-logo/genie.png" width="124" height="35"/>
+          </div>
+          <div class="col-md-4 mb-4 text-center">
+            <img src="img/machine-logo/grove.png" width="124" height="35"/>
+          </div>
+          <div class="col-md-4 mb-4 text-center">
+            <img src="img/machine-logo/jlg.jpg" width="124" height="35"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-4 text-center">
+            <img src="img/machine-logo/skyjack.jpg" width="124" height="35"/>
+          </div>
+          <div class="col-md-4 mb-4 text-center">
+            <img src="img/machine-logo/teupen.png" width="124" height="35"/>
+          </div>
+          <div class="col-md-4 mb-4 text-center">
+            <img src="img/machine-logo/multitel.png" width="124" height="35"/>
+          </div>
+        </div>
+        <div class="row addSmallPaddingToRowContent">
+          <div class="col-lg-3 mb-3">
+            <div class="card h-100 d-flex align-items-stretch">
+              <h4 class="card-header">Maschinenservice</h4>
+              <div class="card-body h-100">
+                <p class="card-text">Haben Sie eine Hebebühne in Betrieb und möchten unsere Dienstleistung beanspruchen? Möchten Sie vielleicht eine neue Maschine anschaffen? Wünschen Sie gerne eine Offerte?</p>
+              </div>
+              <div class="card-body">
+                <a href="#contact" class="btn btn-primary" v-on:click="formSubject = 'Anfrage für Maschinenservice'">Anfragen</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 mb-3">
+            <div class="card h-100 d-flex align-items-stretch">
+                <h4 class="card-header">Ersatzteile</h4>
+                <div class="card-body h-100">
+                  <p class="card-text">Wünschen Sie die Montage von Ersatzteilen? Möchten Sie vielleicht die richtigen Ersatzteile von uns eruieren lassen? Möchten Sie ein Ersatzteil zu fairen Preisen bestellen?</p>
+                </div>
+                <div class="card-body">
+                  <a href="#contact" class="btn btn-primary" v-on:click="formSubject = 'Anfrage für Ersatzteile'">Anfragen</a>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-3 mb-3">
+            <div class="card h-100 d-flex align-items-stretch">
+                <h4 class="card-header">Schulung</h4>
+                <div class="card-body h-100">
+                  <p class="card-text">Wünschen Sie, dass die Benutzer Ihrer Hebebühnen instruiert werden? Wünschen Sie eine korrekte Instandhaltung Ihrer Maschinen?</p>
+                </div>
+                <div class="card-body">
+                  <a href="#contact" class="btn btn-primary" v-on:click="formSubject = 'Anfrage für Schulung'">Anfragen</a>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-3 mb-3">
+            <div class="card h-100 d-flex align-items-stretch">
+                <h4 class="card-header">Sonstige Anfragen</h4>
+                <div class="card-body h-100">
+                  <p class="card-text">Haben Sie sonstige Fragen zu unseren Dienstleistungen? Wünschen Sie eine für Sie angefertigte Offerte?</p>
+                </div>
+                <div class="card-body">
+                  <a href="#contact" class="btn btn-primary" v-on:click="formSubject = 'Sonstige Anfrage'">Anfragen</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- contact panel -->
+    <section id="contact" class="bg-light addPaddingToRowContent">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h4 class="font-weight-bold">Kontakt</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p>Treten Sie mit uns in Kontakt:</p>
+            <p class="font-italic">Pflichtfelder *</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form id="contactForm" method="post" v-on:submit.prevent="validateForm">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="appell" id="formAppellMr" value="Herr" v-model="formAppell">
+                <label class="form-check-label" for="formAppellMr">Herr</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="appell" id="formAppellMrs" value="Frau" v-model="formAppell">
+                <label class="form-check-label" for="formAppellMrs">Frau</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="appell" id="formAppellMrx" value="ohne Angabe" v-model="formAppell">
+                <label class="form-check-label" for="formAppellMrx">ohne Angabe</label>
+              </div>
+              <div class="form-group row">
+                <label for="formFirm" class="col-sm-3 col-form-label">Firma</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="formFirm" v-model="formFirm">
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label for="formLastName" class="col-sm-3 col-form-label">Nachname *</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="formLastName" v-model="formLastName" v-bind:class="{ 'is-invalid': attemptSubmit && missingLastName}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="formFirstName" class="col-sm-3 col-form-label">Vorname *</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="formFirstName" v-model="formFirstName" v-bind:class="{ 'is-invalid': attemptSubmit && missingFirstName}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="formStreet" class="col-sm-3 col-form-label">Strasse und Nr</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="formStreet" v-model="formStreet">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="formZIP" class="col-sm-3 col-form-label">PLZ</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="formZIP" v-model="formZIP">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="formLocation" class="col-sm-3 col-form-label">Ort</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="formLocation" v-model="formLocation">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="formEMail" class="col-sm-3 col-form-label">E-Mail *</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="formEMail" v-model="formEMail" v-bind:class="{ 'is-invalid': attemptSubmit && missingEMail}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="formTel" class="col-sm-3 col-form-label">Telefonnummer</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="formTel" v-model="formTel">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="formSubject" class="col-sm-3 col-form-label">Betreff</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="formSubject" v-model="formSubject">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="formMessage" class="col-sm-3 col-form-label">Nachricht *</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" rows="10" id="formMessage" v-model="formMessage" v-bind:class="{ 'is-invalid': attemptSubmit && missingMessage}"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Senden</button>
+              <p></p>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="alert" v-bind:class="{ 'alert-success': showSuccess, 'alert-danger': showDanger }" role="alert">
+              <p class="text-center">{{formFeedbackMessage}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer panel -->
+    <footer id="footer" class="bg-dark">
+      <div class="container text-white text-center">
+        <div class="row">
+          <div class="col">
+            <br>
+            <p><i class="far fa-envelope"></i> peter.zimmermann@zimpuservice.ch</p>
+            <p><i class="fas fa-phone"></i> (+41) 079 912 59 15</p>
+            <p><i class="far fa-clock"></i> Montag - Freitag (07:00 - 18:00)</p>
+            <p>© ZIMPUSERVICE - <a href="https://ag.chregister.ch/cr-portal/auszug/auszug.xhtml?uid=CHE-137.870.875" target="_blank">CHE-137.870.875</a></p>
+            <br>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        firmActive: '',
+        serviceActive: '',
+        contactActive: '',
+        formAppell: '',
+        formFirm: '',
+        formLastName: '',
+        formFirstName: '',
+        formStreet: '',
+        formZIP: '',
+        formLocation: '',
+        formEMail: '',
+        formTel: '',
+        formSubject: '',
+        formMessage: '',
+        formFeedbackMessage: '',
+        attemptSubmit: false,
+        showSuccess: false,
+        showDanger: false
+      },
+      computed: {
+        missingLastName: function () {
+          return this.formLastName === ''
+        },
+        missingFirstName: function () {
+          return this.formFirstName === ''
+        },
+        missingEMail: function () {
+          return this.formEMail === '' || this.formEMail.indexOf('@') === -1
+        },
+        missingMessage: function () {
+          return this.formMessage === ''
+        }
+      },
+      methods: {
+        displayFormErrorMessage: function () {
+          this.formFeedbackMessage = "Der Versand Ihrer Nachricht ist fehlgeschlagen. Bitte prüfen Sie die Pflichtfelder oder kontaktieren Sie uns direkt via Mail: peter.zimmermann@zimpuservice.ch"
+          this.showSuccess = false
+          this.showDanger = true
+        },
+        displayFormSuccessMessage: function () {
+          this.formFeedbackMessage = "Ihre Nachricht wurde erfolgreich übermittelt."
+          this.showSuccess = true
+          this.showDanger = false
+        },
+        validateForm: function () {
+          this.attemptSubmit = true
+          if (this.missingNames || this.missingEMail || this.missingMessage) {
+            this.displayFormErrorMessage()
+          } else {
+            this.onSubmit()
+          }
+        },
+        onSubmit: function () {
+          axios.defaults.baseURL = 'http://zimpuservice.ch/php/'
+          axios.post('post.php', {
+            'appell': this.formAppell,
+            'firm': this.formFirm,
+            'lastName': this.formLastName,
+            'firstName': this.formFirstName,
+            'street': this.formStreet,
+            'zip': this.formZIP,
+            'location': this.formLocation,
+            'email': this.formEMail,
+            'tel': this.formTel,
+            'subject': this.formSubject,
+            'message': this.formMessage
+          }).then(response => {
+            if (response.data.error === false && response.data.success === true) {
+              this.displayFormSuccessMessage()
+            } else {
+              this.displayFormErrorMessage()
+            }
+          }).catch(error => {
+            this.displayFormErrorMessage()
+          })
+        }
+      }
+    })
+  </script>
+</body>
+</html>
