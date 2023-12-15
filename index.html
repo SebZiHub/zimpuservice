@@ -227,89 +227,71 @@
         </div>
         <div class="row">
           <div class="col">
-            <form id="contactForm" method="post" v-on:submit.prevent="validateForm">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="appell" id="formAppellMr" value="Herr" v-model="formAppell">
-                <label class="form-check-label" for="formAppellMr">Herr</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="appell" id="formAppellMrs" value="Frau" v-model="formAppell">
-                <label class="form-check-label" for="formAppellMrs">Frau</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="appell" id="formAppellMrx" value="ohne Angabe" v-model="formAppell">
-                <label class="form-check-label" for="formAppellMrx">ohne Angabe</label>
-              </div>
+            <!-- Custom form overlay for Google Forms -->
+            <form name='contact-form' id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdqMWxAkh5y9g1n9-uK6jDjLlZx0uuVkTZD-aVV3Qb_oWHzgw/formResponse">
               <div class="form-group row">
                 <label for="formFirm" class="col-sm-3 col-form-label">Firma</label>
                 <div class="col-sm-9">
-                  <input class="form-control" id="formFirm" v-model="formFirm">
+                  <input class="form-control" id="formFirm" name="entry.1596901511">
                 </div>
               </div>
               <div class="form-group row" >
                 <label for="formLastName" class="col-sm-3 col-form-label">Nachname *</label>
                 <div class="col-sm-9">
-                  <input class="form-control" id="formLastName" v-model="formLastName" v-bind:class="{ 'is-invalid': attemptSubmit && missingLastName}">
+                  <input class="form-control" id="formLastName" name="entry.1010063063">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="formFirstName" class="col-sm-3 col-form-label">Vorname *</label>
                 <div class="col-sm-9">
-                  <input class="form-control" id="formFirstName" v-model="formFirstName" v-bind:class="{ 'is-invalid': attemptSubmit && missingFirstName}">
+                  <input class="form-control" id="formFirstName" name="entry.1344500296">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="formStreet" class="col-sm-3 col-form-label">Strasse und Nr</label>
                 <div class="col-sm-9">
-                  <input class="form-control" id="formStreet" v-model="formStreet">
+                  <input class="form-control" id="formStreet" name="entry.1226135004">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="formZIP" class="col-sm-3 col-form-label">PLZ</label>
                 <div class="col-sm-9">
-                  <input class="form-control" id="formZIP" v-model="formZIP">
+                  <input class="form-control" id="formZIP" name="entry.1566686091">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="formLocation" class="col-sm-3 col-form-label">Ort</label>
                 <div class="col-sm-9">
-                  <input class="form-control" id="formLocation" v-model="formLocation">
+                  <input class="form-control" id="formLocation" name="entry.571336562">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="formEMail" class="col-sm-3 col-form-label">E-Mail *</label>
                 <div class="col-sm-9">
-                  <input class="form-control" id="formEMail" v-model="formEMail" v-bind:class="{ 'is-invalid': attemptSubmit && missingEMail}">
+                  <input class="form-control" id="formEMail" name="entry.1859820538">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="formTel" class="col-sm-3 col-form-label">Telefonnummer</label>
                 <div class="col-sm-9">
-                  <input class="form-control" id="formTel" v-model="formTel">
+                  <input class="form-control" id="formTel" name="entry.166591178">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="formSubject" class="col-sm-3 col-form-label">Betreff</label>
                 <div class="col-sm-9">
-                  <input class="form-control" id="formSubject" v-model="formSubject">
+                  <input class="form-control" id="formSubject" name="entry.372860891">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="formMessage" class="col-sm-3 col-form-label">Nachricht *</label>
                 <div class="col-sm-9">
-                  <textarea class="form-control" rows="10" id="formMessage" v-model="formMessage" v-bind:class="{ 'is-invalid': attemptSubmit && missingMessage}"></textarea>
+                  <textarea class="form-control" rows="10" id="formMessage" name="entry.1558505851"></textarea>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Senden</button>
+              <input class='btn btn-primary' type='submit' value='Senden'/>
               <p></p>
             </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="alert" v-bind:class="{ 'alert-success': showSuccess, 'alert-danger': showDanger }" role="alert">
-              <p class="text-center">{{formFeedbackMessage}}</p>
-            </div>
           </div>
         </div>
       </div>
@@ -336,80 +318,11 @@
       data: {
         firmActive: '',
         serviceActive: '',
-        contactActive: '',
-        formAppell: '',
-        formFirm: '',
-        formLastName: '',
-        formFirstName: '',
-        formStreet: '',
-        formZIP: '',
-        formLocation: '',
-        formEMail: '',
-        formTel: '',
-        formSubject: '',
-        formMessage: '',
-        formFeedbackMessage: '',
-        attemptSubmit: false,
-        showSuccess: false,
-        showDanger: false
+        contactActive: ''
       },
       computed: {
-        missingLastName: function () {
-          return this.formLastName === ''
-        },
-        missingFirstName: function () {
-          return this.formFirstName === ''
-        },
-        missingEMail: function () {
-          return this.formEMail === '' || this.formEMail.indexOf('@') === -1
-        },
-        missingMessage: function () {
-          return this.formMessage === ''
-        }
       },
       methods: {
-        displayFormErrorMessage: function () {
-          this.formFeedbackMessage = "Der Versand Ihrer Nachricht ist fehlgeschlagen. Bitte prüfen Sie die Pflichtfelder oder kontaktieren Sie uns direkt via Mail: peter.zimmermann@zimpuservice.ch"
-          this.showSuccess = false
-          this.showDanger = true
-        },
-        displayFormSuccessMessage: function () {
-          this.formFeedbackMessage = "Ihre Nachricht wurde erfolgreich übermittelt."
-          this.showSuccess = true
-          this.showDanger = false
-        },
-        validateForm: function () {
-          this.attemptSubmit = true
-          if (this.missingNames || this.missingEMail || this.missingMessage) {
-            this.displayFormErrorMessage()
-          } else {
-            this.onSubmit()
-          }
-        },
-        onSubmit: function () {
-          axios.defaults.baseURL = 'http://zimpuservice.ch/php/'
-          axios.post('post.php', {
-            'appell': this.formAppell,
-            'firm': this.formFirm,
-            'lastName': this.formLastName,
-            'firstName': this.formFirstName,
-            'street': this.formStreet,
-            'zip': this.formZIP,
-            'location': this.formLocation,
-            'email': this.formEMail,
-            'tel': this.formTel,
-            'subject': this.formSubject,
-            'message': this.formMessage
-          }).then(response => {
-            if (response.data.error === false && response.data.success === true) {
-              this.displayFormSuccessMessage()
-            } else {
-              this.displayFormErrorMessage()
-            }
-          }).catch(error => {
-            this.displayFormErrorMessage()
-          })
-        }
       }
     })
   </script>
